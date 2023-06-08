@@ -1,10 +1,9 @@
 import discord
 import os
 import google.generativeai as palm
-from keep_alive import keep_alive
+
 from discord import app_commands
 
-keep_alive()
 palm.configure('<PaLM API KEY>') # Put your PaLM 2 API key here
 bot_token = '<Discord Bot Token>' # Put your Discord bot token here
 intents = discord.Intents.all()
