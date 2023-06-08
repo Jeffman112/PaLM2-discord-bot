@@ -5,8 +5,8 @@ from keep_alive import keep_alive
 from discord import app_commands
 
 keep_alive()
-palm.configure('<PaLM API KEY') # Put your PaLM 2 API key here
-bot_token = '<Discord Bot Token' # Put your Discord bot token here
+palm.configure('<PaLM API KEY>') # Put your PaLM 2 API key here
+bot_token = '<Discord Bot Token>' # Put your Discord bot token here
 intents = discord.Intents.all()
 client = discord.Client(intents=intents)
 tree = app_commands.CommandTree(client)
