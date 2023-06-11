@@ -62,16 +62,15 @@ async def on_message(message):
     with open(f"{user_id}_history.txt", "a") as f:
       for line in last_response.splitlines():
         f.write(line + "\n")
-
-    parts = [] # This splits the message into multiple parts if it is too long to avoid Discord character limit.
-    while response.last is not None and len(response.last) > 2000: 
-      first_half = response.last[:2000]
-      second_half = response.last[2000:]
-      parts.append(first_half)
-      last_response = second_half
-    if len(response.last) > 0:
-      parts.append(response.last)
-    for part in parts:
-       await message.channel.send(part, reference=message)
-
+ # This splits the message into multiple parts if it is too long to avoid Discord character limit.
+      chunks = []
+      for i in range(0, len(response), 2000):
+        chunks.append(response[i:i+2000])
+      for chunk in chunks:
+        await message.channel.send(chunk, reference=message)
+        
+  if message.content == "!palmreset": #adds ability to clear the users chat history
+      with open(f"{message.author.id}_history.txt", "w") as f:
+        f.write("")
+      await message.channel.send("Memory Cleared!", reference=message)
 client.run(bot_token)
