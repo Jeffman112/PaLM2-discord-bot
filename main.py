@@ -1,7 +1,7 @@
 import discord
 import os
 import google.generativeai as palm
-
+from model_fallback_file import model_fallback
 from discord import app_commands
 
 palm.configure('<PaLM API KEY>') # Put your PaLM 2 API key here
@@ -55,7 +55,8 @@ async def on_message(message):
     )
 
     if response is None:
-      return
+      response = model_fallback(messages=prompt)
+      return response
 
     last_response = response.last.replace("\n", " - ")
     
