@@ -1,5 +1,6 @@
 # PaLM2 Discord Bot
 ## A discord bot for Google's PaLM 2 language model
+[![litellm](https://img.shields.io/badge/%20%F0%9F%9A%85%20liteLLM-OpenAI%7CAnthropic-blue?color=green)](https://github.com/BerriAI/litellm)
 
 Bot invite link: https://tinyurl.com/PaLM2-DiscordBot
 
